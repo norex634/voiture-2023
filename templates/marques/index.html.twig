@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marques{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid col-10 ">
+<div class="row mt-5">
+    {% for marque in marque %}
+    
+            <div class="col-3 d-flex align-items-stretch">
+                <div class="card bg-light mb-3 ">
+                    <div class="card-header text-center bg-primary text-white">
+                        <strong>{{marque.nom}}</strong> 
+                    </div>
+                    <img src="images/marques/{{marque.cover}}" class="rounded mx-auto d-block mt-2" width="200" height="200" alt="Image de la marque" class="starsimg">
+                    <div class="card-body ">
+                        <div class="card-title text-center">
+                            <h4>Voir toutes les {{marque.nom}}</h4>
+                        </div>
+                        <p class="card-text">
+                           quam elementum pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit
+                        </p>
+                        <div class="text-center pt-3 ">
+                        <a href="{{path('voiture_marque',{id:marque.id})}}" class="btn btn-primary">Découvrire les voitures</a>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        
+     
+    {% endfor %}
+    </div>
+ </div>
+
+{% endblock %}

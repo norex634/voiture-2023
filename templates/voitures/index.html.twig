@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voitures{% endblock %}
+
+{% block body %}
+<div class="container-fluid col-10">
+    <div class="row text-center pt-3 pb-3">
+        <h1>Toutes nos voitures en ventes</h1>
+    </div>
+
+{# for marque #}
+    <div class="row">
+        {% for voiture in voiture %}
+        {% include "voitures/allvoiture.html.twig" %}
+    </div>  
+         {% endfor %}
+
+    </div>
+
+</div>  
+{% endblock %}

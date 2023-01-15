@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+            <div class="row mt-5">
+                <div class="col-12 col-md-7 p-0 px-sm-3">
+                <div class="mx-2 w-100">
+                <div class="bd-example">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-indicators">
+                         {% for images in voiture.Images %}
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{loop.index0}}" {% if loop.first %} class="active" aria-current="true" {% endif %} aria-label="Slide {{loop.index}}"></button>
+                        {% endfor %} 
+                        </div>
+
+                        <div class="carousel-inner">
+                            {% for images in voiture.images %}
+                                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                    <img src="{{images.path}}" class="d-block w-100" alt="image de {{voiture.modele}}">
+                                    <div class="carousel-caption d-none d-md-block">
+                                         <h5>{{voiture.modele}}</h5>
+                                        
+                                    </div>
+                                </div>
+                            {% endfor %} 
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-12 col-md-5 d-flex flex-column justify-content-between pt-2 pt-md-0">
+                    <div class="d-flex flex-column justify-content-between h-100">
+
+                        <div class="d-flex align-items-center">
+                            <h3><p>Prix : {{voiture.prix}} €</p></h3>
+                        </div>
+
+                        <div class="row line-height-100 pt-3">
+                         <div class="col-4">
+                            <span class="text-muted text-xs">Marque :</span>
+                            <span class="d-block font-weight-bold pt-1 text-gray-700">{{voiture.Marque.nom}}</span>
+                         </div>
+                         <div class="col-4">
+                            <span class="text-muted text-xs">Modele :</span>
+                            <span class="d-block font-weight-bold pt-1 text-gray-700">{{voiture.modele}}</span>
+                         </div>
+                         <div class="col-4">
+                            <span class="text-muted text-xs">Première immat. :</span>
+                            <span class="d-block font-weight-bold pt-1 text-gray-700">{{voiture.anneeCircul| date('d/m/Y')}}</span>
+                         </div>
+                         <div class="col-4 mt-2">
+                            <span class="text-muted text-xs">Carburant :</span>
+                            <span class="d-block font-weight-bold pt-1 text-gray-700">{{voiture.carburant}}</span>
+                         </div>
+                         <div class="col-4 mt-2">
+                            <span class="text-muted text-xs">Kilométrage  :</span>
+                            <span class="d-block font-weight-bold pt-1 text-gray-700">{{voiture.km}} km</span>
+                         </div>
+                         <div class="col-4 mt-2">
+                            <span class="text-muted text-xs">Puissance :</span>
+                            <span class="d-block font-weight-bold pt-1 text-gray-700">{{voiture.puissance}} Ch</span>
+                         </div>
+                        </div>
+                        
+                        <div class="d-none d-md-flex flex-nowrap justify-content-center align-items-center mt-3">
+                            <a class="mx-2 btn btn-primary" href="#" class="card-link">Téléphoner</a>
+                            <a class="mx-2 btn btn-primary" href="#" class="card-link">Email</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>   
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="border-bottom py-3">
+                <h2 class="h5 mb-4" id="car-data">Données générales</h2>
+                    <div class="row no-gutters w-100 text-md">
+                        <ul class="list-unstyled col-lg-6 col-12 text-muted">
+
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6"> Prix : </span>
+                                <span class="text-dark col-6"> {{voiture.prix}} € </span>
+                            </li>
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6"> Condition véhicule : </span>
+                                <span class="text-dark col-6"> Occasion </span>
+                            </li>
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6"> Marque : </span>
+                                <span class="text-dark col-6"> {{voiture.Marque.nom}} </span>
+                            </li>
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6"> Modele : </span>
+                                <span class="text-dark col-6"> {{voiture.modele}} </span>
+                            </li>
+
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6">Première immat. : </span>
+                                <span class="text-dark col-6">{{voiture.anneeCircul| date('d/m/Y')}}</span>
+                            </li>
+
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6">Kilométrage : </span>
+                                <span class="text-dark col-6">{{voiture.km}} km</span>
+                            </li>
+
+                            
+                            
+                        </ul>
+                        <ul class="list-unstyled col-lg-6 col-12 text-muted">
+
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6">Carburant : </span>
+                                <span class="text-dark col-6">{{voiture.carburant}}</span>
+                            </li>
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6">Puissance : </span>
+                                <span class="text-dark col-6">{{voiture.puissance}} Ch</span>
+                            </li>
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6">Cylindrée : </span>
+                                <span class="text-dark col-6">{{voiture.cylindree}}</span>
+                            </li>
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6">Nombre de propriétaires : </span>
+                                <span class="text-dark col-6">{{voiture.nbProprio}}</span>
+                            </li>
+                            <li class="py-1 row no-gutters">
+                                <span class="col-6">Transmission : </span>
+                                <span class="text-dark col-6">{{voiture.transmission}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-block py-3">
+            <h2 class="h5 mb-4">Description</h2>
+            <div class="w-75">
+                <div class="text-dark text-md format-text">{{voiture.description}}</div>
+            </div>
+        </div>
+        <div class="text-block py-3">
+            <h2 class="h5 mb-4">Option</h2>
+            <div class="w-75">
+                <div class="text-dark text-md format-text">{{voiture.optionCar}}</div>
+            </div>
+        </div>
+
+        {% if app.user %}
+        <div class="d-none d-md-flex flex-nowrap justify-content-center align-items-center mt-3">
+            <a class="mx-2 btn btn-warning" href="{{path('voiture_edit',{'slug':voiture.slug})}}" class="card-link">Modifier</a>
+            <a class="mx-2 btn btn-danger" href="{{path('voiture_delete',{'slug': voiture.slug})}}" class="card-link">Suprimer</a>
+        </div>
+                    
+        {% endif %}
+    </div>
+
+{% block javascripts %}
+
+    <script>
+        console.log('test enfant')
+    </script>
+{% endblock %}
+{% endblock %}

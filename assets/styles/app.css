@@ -1,0 +1,14 @@
+body {
+    background-color: lightgray;
+}
+
+.bg-voiture{
+    height: 85vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(../../public/images/autres/bg.jpg);
+}
+
+
+
