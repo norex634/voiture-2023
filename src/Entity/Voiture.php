@@ -24,52 +24,64 @@ class Voiture
     private ?Marque $marque = null;
 
     #[ORM\Column(length: 120)]
-    //#[Assert\Length(min: 1, max: 120, minMessage: "Le Model doit faire plus de 1 caractère", maxMessage:"Le Model ne doit pas faire plus de 50 caractères")]
+    #[Assert\NotBlank(message:'veillez remplire le champ model')]
+    #[Assert\Length(min: 1, max: 120, minMessage: "Le Model doit faire plus de 1 caractère", maxMessage:"Le Model ne doit pas faire plus de 120 caractères")]
     private ?string $modele = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
     #[ORM\Column]
+
+    #[Assert\NotBlank(message:'veillez remplire le champ klm')]
     //#[Assert\GreaterThanOrEqual(value: 0, valueMessage:"le Nombre de KLM est impossible")]
     private ?int $km = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:'veillez remplire le champ prix')]
     //#[Assert\GreaterThan(min: 1, max: 250000, minMessage: "prix trop petit", maxMessage: "prix trop haut")]
     private ?float $prix = null;
 
     #[ORM\Column(length: 120)]
+    #[Assert\NotBlank(message:'veillez remplire le champ cylindrée')]
     //#[Assert\Choice(['monocylindre', 'bicylindre ', '3-cylindres' ,'4-cylindres','6-cylindres'])]
     private ?string $cylindree = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:'veillez remplire le champ puissance')]
     //#[Assert\GreaterThan(value: 0, valueMessage:"la puissance doit etre plus élevé")]
     private ?int $puissance = null;
 
     #[ORM\Column(length: 120)]
+    #[Assert\NotBlank(message:'veillez remplire le champ carburant')]
     //#[Assert\Choice(['Diesel', 'Essence ', 'Electriques' ,'Hybride','GPL','Autres'])]
     private ?string $carburant = null;
 
     #[ORM\Column(length: 120)]
+    #[Assert\NotBlank(message:'veillez remplire le champ transmission')]
     //#[Assert\Choice(['Avant', 'Arrière ', 'Avant/Arrière'])]
     private ?string $transmission = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotBlank(message:'veillez remplire le champ date de 1ere mise en circulation')]
     private ?\DateTimeInterface $anneeCircul = null;
 
     #[ORM\Column]
     //#[Assert\GreaterThan(value: 0, valueMessage:"il doit aumoin avoir eu un proprio")]
+    #[Assert\NotBlank(message:'veillez remplire le champ nombres de propriétaire')]
     private ?int $nbProprio = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message:'veillez remplire le champ description')]
     //#[Assert\Length(min: 10, max: 1000, minMessage: "la desc doit au moin faire 10 caractères", maxMessage:"la desc doit faire moin de 1000 caractères")]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    //#[Assert\Length(min: 10, max: 1000, minMessage: "les options doit au moin faire 10 caractères", maxMessage:"les option doit faire moin de 1000 caractères")]
+    #[Assert\Length(min: 10, max: 1000, minMessage: "les options doit au moin faire 10 caractères", maxMessage:"les option doit faire moin de 1000 caractères")]
     private ?string $optionCar = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:'veillez télécharger un cover pour la voiture')]
     private ?string $cover = null;
 
     #[ORM\OneToMany(mappedBy: 'voiture', targetEntity: Image::class)]
